@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BeFaster.Runner.Config;
 using BeFaster.Runner.Extensions;
 using BeFaster.Runner.Utils;
 using BeFaster.Solutions;
@@ -70,20 +71,19 @@ namespace BeFaster.Runner
                 .Then(runnerAction.ClientAction);
 
             client.GoLiveWith(processingRules);
+
+            RecordingSystem.NotifyEvent(RoundManagement.GetLastFetchedRound(), runnerAction.ShortName);
         }
 
         private static Optional<RunnerAction> ExtractActionFrom(IEnumerable<string> args)
         {
             var actionName = args.FirstOrDefault() ?? string.Empty;
             var action = RunnerAction.Get(actionName);
-            return action != null
-                ? Optional<RunnerAction>.Some(action)
-                : Optional<RunnerAction>.None;
+            return Optional<RunnerAction>.OfNullable(action);
         }
 
-        private bool IsRecordingSystemOk()
-        {
-            throw new System.NotImplementedException();
-        }
+        private static bool IsRecordingSystemOk() =>
+            !bool.Parse(CredentialsConfig.Get("tdl_require_rec", "True")) ||
+            RecordingSystem.IsRunning();
     }
 }

@@ -4,7 +4,12 @@ namespace BeFaster.Runner
 {
     internal class RoundManagement
     {
-        public static object DisplayAndSaveDescription(string p1, string p2)
+        public static string DisplayAndSaveDescription(string label, string description)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static string GetLastFetchedRound()
         {
             throw new NotImplementedException();
         }

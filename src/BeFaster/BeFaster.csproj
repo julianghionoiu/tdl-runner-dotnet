@@ -58,7 +58,9 @@
     <Compile Include="BeFasterApp.cs" />
     <Compile Include="Runner\Config\CredentialsConfig.cs" />
     <Compile Include="Runner\Exceptions\ConfigNotFoundException.cs" />
+    <Compile Include="Runner\Exceptions\RecordingSystemNotReachable.cs" />
     <Compile Include="Runner\Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Runner\RecordingSystem.cs" />
     <Compile Include="Solutions\CheckoutSolution.cs" />
     <Compile Include="Runner\ClientRunner.Builder.cs">
       <DependentUpon>ClientRunner.cs</DependentUpon>
