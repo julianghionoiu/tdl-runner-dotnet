@@ -15,7 +15,7 @@ namespace BeFaster.Runner.Config
         {
             try
             {
-                foreach (var row in File.ReadAllLines(AppConfig.CredentialsPath))
+                foreach (var row in File.ReadAllLines(AppConfig.CredentialsFilePath))
                 {
                     var data = row.Split('=');
                     Properties.Add(data[0], string.Join("=", data.Skip(1)));

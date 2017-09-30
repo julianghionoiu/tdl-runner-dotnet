@@ -7,6 +7,7 @@ using BeFaster.Runner.Utils;
 using BeFaster.Solutions;
 using TDL.Client;
 using TDL.Client.Actions;
+using TDL.Client.Audit;
 
 namespace BeFaster.Runner
 {
@@ -42,6 +43,7 @@ namespace BeFaster.Runner
             var client = TdlClient.Build()
                 .SetHostname(hostname)
                 .SetUniqueId(username)
+                .SetAuditStream(new ConsoleAuditStream())
                 .Create();
 
             var processingRules = new ProcessingRules();

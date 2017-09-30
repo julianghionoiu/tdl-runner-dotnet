@@ -24,7 +24,7 @@ namespace BeFaster.Runner.Utils
 
         public bool HasValue => values != null && values.Any();
 
-        public T OrElse(T other) => Value ?? other;
+        public T OrElse(T other) => HasValue ? Value : other;
 
         public T OrElseThrow(Func<Exception> exceptionSupplier) => HasValue ? Value : throw exceptionSupplier();
 
@@ -34,7 +34,7 @@ namespace BeFaster.Runner.Utils
             {
                 if (!HasValue)
                 {
-                    throw new InvalidOperationException("Maybe does not have a value");
+                    throw new InvalidOperationException("Optional does not have a value");
                 }
 
                 return values.Single();

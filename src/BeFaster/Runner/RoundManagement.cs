@@ -1,17 +1,33 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
+using System.Text;
+using BeFaster.Runner.Config;
 
 namespace BeFaster.Runner
 {
-    internal class RoundManagement
+    internal static class RoundManagement
     {
+        private static readonly string LastFetchedRoundPath = Path.GetFullPath($@"{AppConfig.ChallengesFolderPath}\{AppConfig.LastFetchedRoundFileName}");
+
         public static string DisplayAndSaveDescription(string label, string description)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Starting round: {label}");
+            Console.WriteLine(description);
+
+            // Save description.
+            var descriptionPath = Path.GetFullPath($@"{AppConfig.ChallengesFolderPath}\{label}.txt");
+            File.WriteAllText(descriptionPath, description.Replace("\n", Environment.NewLine));
+            Console.WriteLine($"Challenge description saved to file: {descriptionPath}.");
+
+            // Save round label.
+            File.WriteAllText(LastFetchedRoundPath, label);
+
+            return "OK";
         }
 
-        public static string GetLastFetchedRound()
-        {
-            throw new NotImplementedException();
-        }
+        public static string GetLastFetchedRound() =>
+            File.ReadLines(LastFetchedRoundPath, Encoding.Default).FirstOrDefault()
+            ?? "noRound";
     }
 }
