@@ -7,5 +7,7 @@ namespace BeFaster.Runner.Config
         public static string Hostname => ConfigurationManager.AppSettings[nameof(Hostname)];
 
         public static string RecordingSystemEndpoint => ConfigurationManager.AppSettings[nameof(RecordingSystemEndpoint)];
+
+        public static string CredentialsPath => ConfigurationManager.AppSettings[nameof(CredentialsPath)];
     }
 }

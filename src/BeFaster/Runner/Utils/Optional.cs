@@ -4,25 +4,29 @@ using System.Linq;
 
 namespace BeFaster.Runner.Utils
 {
-    public struct Maybe<T> where T : class
+    public struct Optional<T> where T : class
     {
         private readonly IEnumerable<T> values;
 
-        public static Maybe<T> Some(T value)
+        public static Optional<T> Some(T value)
         {
             if (value == null)
             {
                 throw new InvalidOperationException();
             }
 
-            return new Maybe<T>(new[] {value});
+            return new Optional<T>(new[] {value});
         }
 
-        public static Maybe<T> None => new Maybe<T>(new T[0]);
+        public static Optional<T> OfNullable(T value) => value == null ? None : Some(value);
+
+        public static Optional<T> None => new Optional<T>(new T[0]);
 
         public bool HasValue => values != null && values.Any();
 
         public T OrElse(T other) => Value ?? other;
+
+        public T OrElseThrow(Func<Exception> exceptionSupplier) => HasValue ? Value : throw exceptionSupplier();
 
         public T Value
         {
@@ -37,7 +41,7 @@ namespace BeFaster.Runner.Utils
             }
         }
         
-        private Maybe(IEnumerable<T> values)
+        private Optional(IEnumerable<T> values)
         {
             this.values = values;
         }

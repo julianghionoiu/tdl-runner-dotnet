@@ -72,13 +72,13 @@ namespace BeFaster.Runner
             client.GoLiveWith(processingRules);
         }
 
-        private static Maybe<RunnerAction> ExtractActionFrom(IEnumerable<string> args)
+        private static Optional<RunnerAction> ExtractActionFrom(IEnumerable<string> args)
         {
             var actionName = args.FirstOrDefault() ?? string.Empty;
             var action = RunnerAction.Get(actionName);
             return action != null
-                ? Maybe<RunnerAction>.Some(action)
-                : Maybe<RunnerAction>.None;
+                ? Optional<RunnerAction>.Some(action)
+                : Optional<RunnerAction>.None;
         }
 
         private bool IsRecordingSystemOk()
