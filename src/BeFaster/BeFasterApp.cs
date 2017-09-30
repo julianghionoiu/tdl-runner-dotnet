@@ -28,7 +28,7 @@ namespace BeFaster
         ///   |  2.  | Run "getNewRoundDescription"            |                                               |
         ///   |  3.  | Read description from ./challenges      |                                               |
         ///   |  4.  | Implement the required method in        |                                               |
-        ///   |      |   ./src/main/java/befaster/solutions    |                                               |
+        ///   |      |   ./src/BeFaster/Solutions              |                                               |
         ///   |  5.  | Run "testConnectivity", observe output  |                                               |
         ///   |  6.  | If ready, run "deployToProduction"      |                                               |
         ///   |  7.  |                                         | Type "done"                                   |
