@@ -85,7 +85,7 @@ namespace BeFaster.Runner
         }
 
         private static bool IsRecordingSystemOk() =>
-            !bool.Parse(CredentialsConfigFile.Get("tdl_require_rec", "True")) ||
+            !bool.Parse(CredentialsConfigFile.Get("tdl_require_rec", "true")) ||
             RecordingSystem.IsRunning();
     }
 }
