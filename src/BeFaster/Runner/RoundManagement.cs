@@ -26,7 +26,8 @@ namespace BeFaster.Runner
         }
 
         public static string GetLastFetchedRound() =>
-            File.ReadLines(LastFetchedRoundPath, Encoding.Default).FirstOrDefault()
-            ?? "noRound";
+            File.Exists(LastFetchedRoundPath)
+                ? File.ReadLines(LastFetchedRoundPath, Encoding.Default).FirstOrDefault()
+                : "noRound";
     }
 }
