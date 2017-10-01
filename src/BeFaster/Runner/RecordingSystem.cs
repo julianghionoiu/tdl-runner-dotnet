@@ -33,7 +33,7 @@ namespace BeFaster.Runner
             try
             {
                 var request = new RestRequest("notify", Method.POST);
-                request.AddBody($"{lastFetchedRound}/{actionName}");
+                request.AddParameter("text/plain", $"{lastFetchedRound}/{actionName}", ParameterType.RequestBody);
                 var response = RestClient.Execute(request);
 
                 if (response.StatusCode != HttpStatusCode.OK)
