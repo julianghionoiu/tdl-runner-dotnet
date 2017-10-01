@@ -2,13 +2,12 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using BeFaster.Runner.Config;
 
 namespace BeFaster.Runner
 {
     internal static class RoundManagement
     {
-        private static readonly string LastFetchedRoundPath = Path.GetFullPath($@"{AppConfig.ChallengesFolderPath}\{AppConfig.LastFetchedRoundFileName}");
+        private static readonly string LastFetchedRoundPath = Path.GetFullPath(@"..\..\..\..\challenges\XR.txt");
 
         public static string DisplayAndSaveDescription(string label, string description)
         {
@@ -16,7 +15,7 @@ namespace BeFaster.Runner
             Console.WriteLine(description);
 
             // Save description.
-            var descriptionPath = Path.GetFullPath($@"{AppConfig.ChallengesFolderPath}\{label}.txt");
+            var descriptionPath = Path.GetFullPath($@"..\..\..\..\challenges\{label}.txt");
             File.WriteAllText(descriptionPath, description.Replace("\n", Environment.NewLine));
             Console.WriteLine($"Challenge description saved to file: {descriptionPath}.");
 

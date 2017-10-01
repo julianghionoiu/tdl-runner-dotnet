@@ -1,5 +1,4 @@
 ﻿using BeFaster.Runner;
-using BeFaster.Runner.Config;
 
 namespace BeFaster
 {
@@ -41,8 +40,8 @@ namespace BeFaster
         private static void Main(string[] args)
         {
             ClientRunner.Build()
-                .ForUsername(CredentialsConfig.Get("tdl_username"))
-                .WithServerHostname(AppConfig.Hostname)
+                .ForUsername(CredentialsConfigFile.Get("tdl_username"))
+                .WithServerHostname("run.befaster.io")
                 .WithActionIfNoArgs(RunnerAction.Get(RunnerAction.Names.TestConnectivity))
                 .Create()
                 .Start(args);

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BeFaster.Runner.Config;
 using BeFaster.Runner.Extensions;
 using BeFaster.Runner.Utils;
 using BeFaster.Solutions;
@@ -85,7 +84,7 @@ namespace BeFaster.Runner
         }
 
         private static bool IsRecordingSystemOk() =>
-            !bool.Parse(CredentialsConfig.Get("tdl_require_rec", "True")) ||
+            !bool.Parse(CredentialsConfigFile.Get("tdl_require_rec", "True")) ||
             RecordingSystem.IsRunning();
     }
 }

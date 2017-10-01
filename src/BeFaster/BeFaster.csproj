@@ -54,9 +54,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Runner\Config\AppConfig.cs" />
     <Compile Include="BeFasterApp.cs" />
-    <Compile Include="Runner\Config\CredentialsConfig.cs" />
+    <Compile Include="Runner\CredentialsConfigFile.cs" />
     <Compile Include="Runner\Exceptions\ConfigNotFoundException.cs" />
     <Compile Include="Runner\Exceptions\RecordingSystemNotReachable.cs" />
     <Compile Include="Runner\Extensions\DictionaryExtensions.cs" />

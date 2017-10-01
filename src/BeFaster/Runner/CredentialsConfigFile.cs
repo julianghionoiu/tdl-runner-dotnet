@@ -5,17 +5,17 @@ using BeFaster.Runner.Exceptions;
 using BeFaster.Runner.Extensions;
 using BeFaster.Runner.Utils;
 
-namespace BeFaster.Runner.Config
+namespace BeFaster.Runner
 {
-    internal static class CredentialsConfig
+    internal static class CredentialsConfigFile
     {
         private static readonly Dictionary<string, string> Properties = new Dictionary<string, string>();
 
-        static CredentialsConfig()
+        static CredentialsConfigFile()
         {
             try
             {
-                foreach (var row in File.ReadAllLines(AppConfig.CredentialsFilePath))
+                foreach (var row in File.ReadAllLines(@"..\..\..\..\config\credentials.config"))
                 {
                     var data = row.Split('=');
                     Properties.Add(data[0], string.Join("=", data.Skip(1)));
