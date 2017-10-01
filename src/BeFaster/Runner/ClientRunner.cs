@@ -79,7 +79,8 @@ namespace BeFaster.Runner
         private static Optional<RunnerAction> ExtractActionFrom(IEnumerable<string> args)
         {
             var actionName = args.FirstOrDefault() ?? string.Empty;
-            var action = RunnerAction.Get(actionName);
+            var action = RunnerAction.AllActions.FirstOrDefault(a => a.ShortName.Equals(actionName, StringComparison.InvariantCultureIgnoreCase));
+
             return Optional<RunnerAction>.OfNullable(action);
         }
 

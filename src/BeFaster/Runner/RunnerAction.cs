@@ -1,27 +1,9 @@
-﻿using System;
-using System.Linq;
-using TDL.Client.Actions;
+﻿using TDL.Client.Actions;
 
 namespace BeFaster.Runner
 {
     internal class RunnerAction
     {
-        public static class Names
-        {
-            public const string GetNewRoundDescription = "new";
-            public const string TestConnectivity = "test";
-            public const string DeployToProduction = "deploy";
-        }
-
-        private static readonly RunnerAction[] Actions =
-        {
-            new RunnerAction(Names.GetNewRoundDescription, ClientActions.Stop),
-            new RunnerAction(Names.TestConnectivity, ClientActions.Stop),
-            new RunnerAction(Names.DeployToProduction, ClientActions.Publish)
-        };
-
-        public static RunnerAction Get(string name) => Actions.FirstOrDefault(a => a.ShortName.Equals(name, StringComparison.InvariantCultureIgnoreCase));
-
         public string ShortName { get; }
         public IClientAction ClientAction { get; }
 
@@ -30,5 +12,16 @@ namespace BeFaster.Runner
             ShortName = shortName;
             ClientAction = clientAction;
         }
+
+        public static readonly RunnerAction GetNewRoundDescription = new RunnerAction("new", ClientActions.Stop);
+        public static readonly RunnerAction TestConnectivity = new RunnerAction("test", ClientActions.Stop);
+        public static readonly RunnerAction DeployToProduction = new RunnerAction("deploy", ClientActions.Publish);
+
+        public static readonly RunnerAction[] AllActions =
+        {
+            GetNewRoundDescription,
+            TestConnectivity,
+            DeployToProduction
+        };
     }
 }
