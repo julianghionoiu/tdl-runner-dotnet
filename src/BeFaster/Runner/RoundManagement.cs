@@ -12,7 +12,9 @@ namespace BeFaster.Runner
 
         static RoundManagement()
         {
-            var srcPath = GetParent(Environment.CurrentDirectory, "src");
+            var exePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+            var srcPath = FindParent(exePath, "src");
             var repoPath = Directory.GetParent(srcPath).FullName;
 
             ChallengesPath = Path.Combine(repoPath, "challenges");
@@ -41,7 +43,7 @@ namespace BeFaster.Runner
                 ? File.ReadLines(LastFetchedRoundPath, Encoding.Default).FirstOrDefault()
                 : "noRound";
 
-        private static string GetParent(string path, string parentName)
+        private static string FindParent(string path, string parentName)
         {
             while (true)
             {
