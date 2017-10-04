@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text;
+using BeFaster.Runner.Utils;
 
 namespace BeFaster.Runner
 {
@@ -12,10 +13,7 @@ namespace BeFaster.Runner
 
         static RoundManagement()
         {
-            var exePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-
-            var srcPath = FindParent(exePath, "src");
-            var repoPath = Directory.GetParent(srcPath).FullName;
+            var repoPath = Directory.GetParent(PathHelper.RepositoryPath).FullName;
 
             ChallengesPath = Path.Combine(repoPath, "challenges");
             LastFetchedRoundPath = Path.Combine(ChallengesPath, "XR.txt");
@@ -42,25 +40,5 @@ namespace BeFaster.Runner
             File.Exists(LastFetchedRoundPath)
                 ? File.ReadLines(LastFetchedRoundPath, Encoding.Default).FirstOrDefault()
                 : "noRound";
-
-        private static string FindParent(string path, string parentName)
-        {
-            while (true)
-            {
-                var directory = new DirectoryInfo(path);
-
-                if (directory.Parent == null)
-                {
-                    return null;
-                }
-
-                if (directory.Parent.Name == parentName)
-                {
-                    return directory.Parent.FullName;
-                }
-
-                path = directory.Parent.FullName;
-            }
-        }
     }
 }

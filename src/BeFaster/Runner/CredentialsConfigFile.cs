@@ -15,7 +15,9 @@ namespace BeFaster.Runner
         {
             try
             {
-                foreach (var row in File.ReadAllLines(@"..\..\..\..\config\credentials.config"))
+                var credentialsPath = Path.Combine(PathHelper.RepositoryPath, "config", "credentials.config");
+
+                foreach (var row in File.ReadAllLines(credentialsPath))
                 {
                     var data = row.Split('=');
                     Properties.Add(data[0], string.Join("=", data.Skip(1)));
