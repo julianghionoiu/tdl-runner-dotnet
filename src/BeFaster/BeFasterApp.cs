@@ -47,7 +47,7 @@ namespace BeFaster
             ClientRunner.Build()
                 .ForUsername(CredentialsConfigFile.Get("tdl_username"))
                 .WithServerHostname("run.befaster.io")
-                .WithActionIfNoArgs(RunnerAction.GetNewRoundDescription)
+                .WithActionIfNoArgs(RunnerAction.TestConnectivity)
                 .Create()
                 .Start(args);
         }
