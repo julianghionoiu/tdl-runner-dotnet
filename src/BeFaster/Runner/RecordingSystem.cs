@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using BeFaster.Runner.Config;
 using BeFaster.Runner.Exceptions;
 using RestSharp;
 
@@ -8,7 +7,9 @@ namespace BeFaster.Runner
 {
     internal static class RecordingSystem
     {
-        private static readonly IRestClient RestClient = new RestClient(AppConfig.RecordingSystemEndpoint);
+        private const string RecordingSystemEndpoint = "http://localhost:41375";
+
+        private static readonly IRestClient RestClient = new RestClient(RecordingSystemEndpoint);
 
         public static bool IsRunning()
         {
@@ -32,7 +33,7 @@ namespace BeFaster.Runner
             try
             {
                 var request = new RestRequest("notify", Method.POST);
-                request.AddBody($"{lastFetchedRound}/{actionName}");
+                request.AddParameter("text/plain", $"{lastFetchedRound}/{actionName}", ParameterType.RequestBody);
                 var response = RestClient.Execute(request);
 
                 if (response.StatusCode != HttpStatusCode.OK)
