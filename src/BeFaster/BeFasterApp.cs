@@ -7,9 +7,14 @@ namespace BeFaster
         /// <summary>
         /// ~~~~~~~~~~ Running the system: ~~~~~~~~~~~~~
         /// 
-        ///   From IDE:
-        ///      In project properties set the value of Debug/Start Options/Command Line Arguments
+        ///   From IDE, run without args:
+        ///      Set the value of the `WithActionIfNoArgs` below
         ///      Run this project from the IDE.
+        /// 
+        ///   From IDE, run with args:
+        ///      Create a separate Run configuration
+        ///      Add the name of the action as an argument to the command-line 
+        ///      Run the newly created configuration from the IDE.
         ///
         ///   Available actions:
         ///        * getNewRoundDescription    - Get the round description (call once per round).
@@ -42,10 +47,7 @@ namespace BeFaster
             ClientRunner.Build()
                 .ForUsername(CredentialsConfigFile.Get("tdl_username"))
                 .WithServerHostname("run.befaster.io")
-
-                // If running from IDE, set desired RunnerAction here.
-                .WithActionIfNoArgs(RunnerAction.TestConnectivity)
-
+                .WithActionIfNoArgs(RunnerAction.GetNewRoundDescription)
                 .Create()
                 .Start(args);
         }

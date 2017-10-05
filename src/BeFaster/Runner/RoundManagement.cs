@@ -13,9 +13,7 @@ namespace BeFaster.Runner
 
         static RoundManagement()
         {
-            var repoPath = Directory.GetParent(PathHelper.RepositoryPath).FullName;
-
-            ChallengesPath = Path.Combine(repoPath, "challenges");
+            ChallengesPath = Path.Combine(PathHelper.RepositoryPath, "challenges");
             LastFetchedRoundPath = Path.Combine(ChallengesPath, "XR.txt");
         }
 
