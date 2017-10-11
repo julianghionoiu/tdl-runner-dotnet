@@ -1,5 +1,6 @@
-# tdl-runner-dotnet
-The .Net challenge runner
+# tdl-runner-csharp
+
+The C# (.Net) challenge runner
 
 ## 1. Requirements
 
