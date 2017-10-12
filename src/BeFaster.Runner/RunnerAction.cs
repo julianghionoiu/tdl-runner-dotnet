@@ -2,7 +2,7 @@
 
 namespace BeFaster.Runner
 {
-    internal class RunnerAction
+    public class RunnerAction
     {
         public string ShortName { get; }
         public IClientAction ClientAction { get; }

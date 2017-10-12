@@ -7,7 +7,7 @@ using BeFaster.Runner.Utils;
 
 namespace BeFaster.Runner
 {
-    internal static class CredentialsConfigFile
+    public static class CredentialsConfigFile
     {
         private static readonly Dictionary<string, string> Properties = new Dictionary<string, string>();
 

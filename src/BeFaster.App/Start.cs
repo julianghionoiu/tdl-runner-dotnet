@@ -1,8 +1,10 @@
-﻿using BeFaster.Runner;
+﻿using BeFaster.App.Solutions;
+using BeFaster.Runner;
+using BeFaster.Runner.Extensions;
 
-namespace BeFaster
+namespace BeFaster.App
 {
-    internal class BeFasterApp
+    internal class Start
     {
         /// <summary>
         /// ~~~~~~~~~~ Running the system: ~~~~~~~~~~~~~
@@ -32,7 +34,7 @@ namespace BeFaster
         ///   |  2.  | Run "getNewRoundDescription"            |                                               |
         ///   |  3.  | Read description from ./challenges      |                                               |
         ///   |  4.  | Implement the required method in        |                                               |
-        ///   |      |   ./src/BeFaster/Solutions              |                                               |
+        ///   |      |   ./src/BeFaster.App/Solutions          |                                               |
         ///   |  5.  | Run "testConnectivity", observe output  |                                               |
         ///   |  6.  | If ready, run "deployToProduction"      |                                               |
         ///   |  7.  |                                         | Type "done"                                   |
@@ -44,11 +46,14 @@ namespace BeFaster
         /// <param name="args">Action.</param>
         private static void Main(string[] args)
         {
-            ClientRunner.Build()
+            ClientRunner
                 .ForUsername(CredentialsConfigFile.Get("tdl_username"))
                 .WithServerHostname("run.befaster.io")
                 .WithActionIfNoArgs(RunnerAction.TestConnectivity)
-                .Create()
+                .WithSolutionFor("sum", p => SumSolution.Sum(p[0].AsInt(), p[1].AsInt()))
+                .WithSolutionFor("hello", p => HelloSolution.Hello(p[0]))
+                .WithSolutionFor("fizz_buzz", p => FizzBuzzSolution.FizzBuzz(p[0].AsInt()))
+                .WithSolutionFor("checkout", p => CheckoutSolution.Checkout(p[0]))
                 .Start(args);
         }
     }

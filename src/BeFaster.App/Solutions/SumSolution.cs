@@ -1,10 +1,10 @@
 ﻿using BeFaster.Runner.Exceptions;
 
-namespace BeFaster.Solutions
+namespace BeFaster.App.Solutions
 {
-    internal static class FizzBuzzSolution
+    public static class SumSolution
     {
-        public static string FizzBuzz(int number)
+        public static int Sum(int x, int y)
         {
             throw new SolutionNotImplementedException();
         }
