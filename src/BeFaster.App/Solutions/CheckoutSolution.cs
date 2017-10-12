@@ -1,10 +1,10 @@
 ﻿using BeFaster.Runner.Exceptions;
 
-namespace BeFaster.Solutions
+namespace BeFaster.App.Solutions
 {
-    internal static class SumSolution
+    public static class CheckoutSolution
     {
-        public static int Sum(int x, int y)
+        public static int Checkout(string skus)
         {
             throw new SolutionNotImplementedException();
         }
