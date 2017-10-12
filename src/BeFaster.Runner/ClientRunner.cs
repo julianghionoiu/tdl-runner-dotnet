@@ -54,7 +54,7 @@ namespace BeFaster.Runner
 
             var runnerAction = ExtractActionFrom(args).OrElse(defaultRunnerAction);
 
-            Console.WriteLine("Chosen action is: " + runnerAction.ShortName);
+            Console.WriteLine("Chosen action is: " + runnerAction.LongName);
 
             var client = TdlClient.Build()
                 .SetHostname(hostname)
@@ -85,7 +85,7 @@ namespace BeFaster.Runner
         private static Optional<RunnerAction> ExtractActionFrom(IEnumerable<string> args)
         {
             var actionName = args.FirstOrDefault() ?? string.Empty;
-            var action = RunnerAction.AllActions.FirstOrDefault(a => a.ShortName.Equals(actionName, StringComparison.InvariantCultureIgnoreCase));
+            var action = RunnerAction.AllActions.FirstOrDefault(a => a.LongName.Equals(actionName, StringComparison.InvariantCultureIgnoreCase));
 
             return Optional<RunnerAction>.OfNullable(action);
         }
