@@ -4,7 +4,7 @@ using BeFaster.Runner.Extensions;
 
 namespace BeFaster.App
 {
-    internal class Program
+    internal class Start
     {
         /// <summary>
         /// ~~~~~~~~~~ Running the system: ~~~~~~~~~~~~~
