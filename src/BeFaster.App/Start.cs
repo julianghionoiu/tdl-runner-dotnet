@@ -1,4 +1,6 @@
-﻿using BeFaster.App.Solutions;
+﻿using System;
+
+using BeFaster.App.Solutions;
 using BeFaster.Runner;
 using BeFaster.Runner.Extensions;
 
@@ -55,6 +57,9 @@ namespace BeFaster.App
                 .WithSolutionFor("fizz_buzz", p => FizzBuzzSolution.FizzBuzz(p[0].AsInt()))
                 .WithSolutionFor("checkout", p => CheckoutSolution.Checkout(p[0]))
                 .Start(args);
+
+            Console.Write("\nPress any key to exit... ");
+            Console.ReadLine();
         }
     }
 }
