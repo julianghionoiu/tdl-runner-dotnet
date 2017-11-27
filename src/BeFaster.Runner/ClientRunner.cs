@@ -75,7 +75,7 @@ namespace BeFaster.Runner
 
         private static bool UseExperimentalFeature()
         {
-            return bool.Parse(CredentialsConfigFile.Get("tdl_enable_experimental", "true"));
+            return bool.Parse(CredentialsConfigFile.Get("tdl_enable_experimental", "false"));
         }
 
 
