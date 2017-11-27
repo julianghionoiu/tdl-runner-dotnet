@@ -15,5 +15,5 @@ IDE
 ## 2. How to start
 
 - Open solution `befaster.sln`
-- In solution open `BeFaster.App/Start.cs`
+- In solution open `BeFaster.App/ConnectToServer.cs`
 - Read the comments as documentation, they will guide through the rest of the setup

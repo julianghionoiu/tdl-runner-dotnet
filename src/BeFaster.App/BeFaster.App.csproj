@@ -44,7 +44,7 @@
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Start.cs" />
+    <Compile Include="ConnectToServer.cs" />
     <Compile Include="Solutions\CheckoutSolution.cs" />
     <Compile Include="Solutions\FizzBuzzSolution.cs" />
     <Compile Include="Solutions\HelloSolution.cs" />
