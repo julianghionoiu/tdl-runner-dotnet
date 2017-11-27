@@ -50,7 +50,7 @@ namespace BeFaster.App
         {
             ClientRunner
                 .ForUsername(CredentialsConfigFile.Get("tdl_username"))
-                .WithServerHostname("run.befaster.io")
+                .WithServerHostname(CredentialsConfigFile.Get("tdl_hostname"))
                 .WithActionIfNoArgs(RunnerAction.TestConnectivity)
                 .WithSolutionFor("sum", p => SumSolution.Sum(p[0].AsInt(), p[1].AsInt()))
                 .WithSolutionFor("hello", p => HelloSolution.Hello(p[0]))
