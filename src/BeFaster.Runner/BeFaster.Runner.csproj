@@ -70,6 +70,7 @@
     <Compile Include="RunnerAction.cs" />
     <Compile Include="Utils\Optional.cs" />
     <Compile Include="Utils\PathHelper.cs" />
+    <Compile Include="WindowsConsoleSupport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
