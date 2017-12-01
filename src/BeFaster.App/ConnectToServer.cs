@@ -12,13 +12,13 @@ namespace BeFaster.App
         /// ~~~~~~~~~~ Running the system: ~~~~~~~~~~~~~
         ///
         ///   From IDE:
-        ///      Run the "BeFaster.App" solution from the IDE.
+        ///      Configure the "BeFaster.App" solution to Run on External Console then run.
         ///
         ///   From command line:
         ///      msbuild befaster.sln; src\BeFaster.App\bin\Debug\BeFaster.App.exe
         ///
         ///   To run your unit tests locally:
-        ///      Run the "BeFaster.App.Tests" solution.
+        ///      Run the "BeFaster.App.Tests - Unit Tests" configuration.
         ///
         /// ~~~~~~~~~~ The workflow ~~~~~~~~~~~~~
         ///
