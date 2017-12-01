@@ -6,7 +6,7 @@ using BeFaster.Runner.Extensions;
 
 namespace BeFaster.App
 {
-    internal class ConnectToServer
+    internal class SendCommandToServer
     {
         /// <summary>
         /// ~~~~~~~~~~ Running the system: ~~~~~~~~~~~~~

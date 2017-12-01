@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>BeFaster.App.ConnectToServer</StartupObject>
+    <StartupObject>BeFaster.App.SendCommandToServer</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -44,7 +44,7 @@
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConnectToServer.cs" />
+    <Compile Include="SendCommandToServer.cs" />
     <Compile Include="Solutions\CheckoutSolution.cs" />
     <Compile Include="Solutions\FizzBuzzSolution.cs" />
     <Compile Include="Solutions\HelloSolution.cs" />
