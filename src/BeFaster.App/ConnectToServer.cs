@@ -10,40 +10,37 @@ namespace BeFaster.App
     {
         /// <summary>
         /// ~~~~~~~~~~ Running the system: ~~~~~~~~~~~~~
-        /// 
-        ///   From IDE, run without args:
-        ///      Set the value of the `WithActionIfNoArgs` below
-        ///      Run this project from the IDE.
-        /// 
-        ///   From IDE, run with args:
-        ///      Create a separate Run configuration
-        ///      Add the name of the action as an argument to the command-line 
-        ///      Run the newly created configuration from the IDE.
         ///
-        ///   Available actions:
-        ///        * getNewRoundDescription    - Get the round description (call once per round).
-        ///        * testConnectivity          - Test you can connect to the server (call any number of time)
-        ///        * deployToProduction        - Release your code. Real requests will be used to test your solution.
-        ///                                      If your solution is wrong you get a penalty of 10 minutes.
-        ///                                      After you fix the problem, you should deploy a new version into production.
+        ///   From IDE:
+        ///      Run the "BeFaster.App" solution from the IDE.
+        ///
+        ///   From command line:
+        ///      msbuild befaster.sln; src\BeFaster.App\bin\Debug\BeFaster.App.exe
+        ///
+        ///   To run your unit tests locally:
+        ///      Run the "BeFaster.App.Tests" solution.
         ///
         /// ~~~~~~~~~~ The workflow ~~~~~~~~~~~~~
         ///
-        ///   +------+-----------------------------------------+-----------------------------------------------+
-        ///   | Step |          IDE                            |         Web console                           |
-        ///   +------+-----------------------------------------+-----------------------------------------------+
-        ///   |  1.  |                                         | Start a challenge, should display "Started"   |
-        ///   |  2.  | Run "getNewRoundDescription"            |                                               |
-        ///   |  3.  | Read description from ./challenges      |                                               |
-        ///   |  4.  | Implement the required method in        |                                               |
-        ///   |      |   ./src/BeFaster.App/Solutions          |                                               |
-        ///   |  5.  | Run "testConnectivity", observe output  |                                               |
-        ///   |  6.  | If ready, run "deployToProduction"      |                                               |
-        ///   |  7.  |                                         | Type "done"                                   |
-        ///   |  8.  |                                         | Check failed requests                         |
-        ///   |  9.  |                                         | Go to step 2.                                 |
-        ///   +------+-----------------------------------------+-----------------------------------------------+
-        /// 
+        ///   By running this file you interact with a challenge server.
+        ///   The interaction follows a request-response pattern:
+        ///        * You are presented with your current progress and a list of actions.
+        ///        * You trigger one of the actions by typing it on the console.
+        ///        * After the action feedback is presented, the execution will stop.
+        ///
+        ///   +------+-------------------------------------------------------------+
+        ///   | Step | The usual workflow                                          |
+        ///   +------+-------------------------------------------------------------+
+        ///   |  1.  | Run this file.                                              |
+        ///   |  2.  | Start a challenge by typing "start".                        |
+        ///   |  3.  | Read description from the "challenges" folder               |
+        ///   |  4.  | Implement the required method in                            |
+        ///   |      |   .\src\BeFaster.App\Solutions                              |
+        ///   |  5.  | Deploy to production by typing "deploy".                    |
+        ///   |  6.  | Observe output, check for failed requests.                  |
+        ///   |  7.  | If passed, go to step 3.                                    |
+        ///   +------+-------------------------------------------------------------+
+        ///
         /// </summary>
         /// <param name="args">Action.</param>
         private static void Main(string[] args)
