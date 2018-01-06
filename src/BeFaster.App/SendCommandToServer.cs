@@ -52,8 +52,6 @@ namespace BeFaster.App
         /// <param name="args">Action.</param>
         private static void Main(string[] args)
         {
-            WindowsConsoleSupport.EnableColours();
-
             var runner = new QueueBasedImplementationRunner.Builder()
                 .SetConfig(Utils.GetRunnerConfig())
                 .WithSolutionFor("sum", p => SumSolution.Sum(p[0].AsInt(), p[1].AsInt()))
