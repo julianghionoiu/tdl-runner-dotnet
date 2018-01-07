@@ -1,8 +1,9 @@
-﻿using System;
-
-using BeFaster.App.Solutions;
+﻿using BeFaster.App.Solutions;
 using BeFaster.Runner;
 using BeFaster.Runner.Extensions;
+using BeFaster.Runner.Utils;
+using TDL.Client;
+using TDL.Client.Runner;
 
 namespace BeFaster.App
 {
@@ -51,15 +52,18 @@ namespace BeFaster.App
         /// <param name="args">Action.</param>
         private static void Main(string[] args)
         {
-            ClientRunner
-                .ForUsername(CredentialsConfigFile.Get("tdl_username"))
-                .WithServerHostname(CredentialsConfigFile.Get("tdl_hostname"))
-                .WithActionIfNoArgs(RunnerAction.TestConnectivity)
+            var runner = new QueueBasedImplementationRunner.Builder()
+                .SetConfig(Utils.GetRunnerConfig())
                 .WithSolutionFor("sum", p => SumSolution.Sum(p[0].AsInt(), p[1].AsInt()))
                 .WithSolutionFor("hello", p => HelloSolution.Hello(p[0]))
                 .WithSolutionFor("fizz_buzz", p => FizzBuzzSolution.FizzBuzz(p[0].AsInt()))
                 .WithSolutionFor("checkout", p => CheckoutSolution.Checkout(p[0]))
-                .Start(args);
+                .Create();
+
+            ChallengeSession.ForRunner(runner)
+                .WithConfig(Utils.GetConfig())
+                .WithActionProvider(new UserInputAction(args))
+                .Start();
         }
     }
 }
