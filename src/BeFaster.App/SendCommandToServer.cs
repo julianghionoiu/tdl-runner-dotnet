@@ -1,4 +1,5 @@
-﻿using BeFaster.App.Solutions;
+﻿using System;
+using BeFaster.App.Solutions;
 using BeFaster.Runner;
 using BeFaster.Runner.Extensions;
 using BeFaster.Runner.Utils;
@@ -64,6 +65,9 @@ namespace BeFaster.App
                 .WithConfig(Utils.GetConfig())
                 .WithActionProvider(new UserInputAction(args))
                 .Start();
+
+            Console.Write("Press any key to continue . . . ");
+            Console.ReadKey();
         }
     }
 }
