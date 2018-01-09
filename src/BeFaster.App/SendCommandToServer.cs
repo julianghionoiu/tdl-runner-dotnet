@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using BeFaster.App.Solutions;
 using BeFaster.Runner;
 using BeFaster.Runner.Extensions;
