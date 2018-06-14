@@ -60,11 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SendCommandToServer.cs" />
-    <Compile Include="Solutions\CheckoutSolution.cs" />
-    <Compile Include="Solutions\FizzBuzzSolution.cs" />
-    <Compile Include="Solutions\HelloSolution.cs" />
+    <Compile Include="Solutions\CHK\CheckoutSolution.cs" />
+    <Compile Include="Solutions\FIZ\FizzBuzzSolution.cs" />
+    <Compile Include="Solutions\HLO\HelloSolution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Solutions\SumSolution.cs" />
+    <Compile Include="Solutions\SUM\SumSolution.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
