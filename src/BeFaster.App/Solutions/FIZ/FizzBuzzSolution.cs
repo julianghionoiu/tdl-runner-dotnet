@@ -1,6 +1,6 @@
 ﻿using BeFaster.Runner.Exceptions;
 
-namespace BeFaster.App.Solutions
+namespace BeFaster.App.Solutions.FIZ
 {
     public static class FizzBuzzSolution
     {
