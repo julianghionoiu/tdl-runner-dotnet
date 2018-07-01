@@ -14,6 +14,9 @@ DOTNET_CODE_COVERAGE_INFO="${SCRIPT_CURRENT_DIR}/coverage.tdl"
 mkdir -p ${SCRIPT_CURRENT_DIR}/coverage
 
 ( cd ${SCRIPT_CURRENT_DIR} && \
+     mono /usr/bin/nuget restore befaster.sln)
+     
+( cd ${SCRIPT_CURRENT_DIR} && \
      msbuild ${SCRIPT_CURRENT_DIR}/befaster.sln /p:TargetFrameworkVersion=v4.5 )
 
 ( cd ${SCRIPT_CURRENT_DIR} && \
