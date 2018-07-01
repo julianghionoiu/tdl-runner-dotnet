@@ -11,9 +11,18 @@ CHALLENGE_ID=$1
 DOTNET_TEST_REPORT_CSV_FILE="${SCRIPT_CURRENT_DIR}/coverage/results.csv"
 DOTNET_CODE_COVERAGE_INFO="${SCRIPT_CURRENT_DIR}/coverage.tdl"
 
-( cd ${SCRIPT_CURRENT_DIR} && \
-    xbuild befaster.sln || true 1>&2 )
+mkdir -p ${SCRIPT_CURRENT_DIR}/coverage
 
+( cd ${SCRIPT_CURRENT_DIR} && \
+     msbuild ${SCRIPT_CURRENT_DIR}/befaster.sln /p:TargetFrameworkVersion=v4.5 )
+
+( cd ${SCRIPT_CURRENT_DIR} && \
+    mono --debug \
+    --profile=coverage \
+    packages/NUnit.ConsoleRunner.3.8.0/tools/nunit3-console.exe \
+    --framework=mono-4.0 \
+    ${SCRIPT_CURRENT_DIR}/src/BeFaster.App.Tests/bin/Debug/BeFaster.App.Tests.dll || true 1>&2 )
+# <--- PLACEHOLDER FOR COVERAGE REPORT GENERATION AND PARSING --->
 [ -e ${DOTNET_CODE_COVERAGE_INFO} ] && rm ${DOTNET_CODE_COVERAGE_INFO}
 
 if [ -f "${DOTNET_TEST_REPORT_CSV_FILE}" ]; then
