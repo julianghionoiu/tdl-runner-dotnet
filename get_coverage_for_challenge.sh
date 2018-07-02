@@ -19,7 +19,7 @@ mkdir -p ${SCRIPT_CURRENT_DIR}/coverage
 ( cd ${SCRIPT_CURRENT_DIR} && \
      msbuild ${SCRIPT_CURRENT_DIR}/befaster.sln /p:buildmode=debug /p:TargetFrameworkVersion=v4.5 )
      
-echo "BeFaster" > tests.cfg     
+echo "BeFaster" > ${SCRIPT_CURRENT_DIR}/tests.cfg     
 
 ( cd ${SCRIPT_CURRENT_DIR} && \
         BABOON_CFG=tests.cfg mono ${BABOON_HOME}/covtool/bin/covem.exe \
