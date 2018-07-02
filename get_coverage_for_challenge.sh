@@ -40,7 +40,9 @@ if [ -f "${DOTNET_TEST_REPORT_DB_FILE}" ]; then
     if [[ ${TOTAL_LINES} -eq 0 ]]; then
         TOTAL_COVERAGE_PERCENTAGE=0
     else
-        TOTAL_COVERAGE_PERCENTAGE=$(( ${COVERED_LINES} / ${TOTAL_LINES} * 100 ))
+        TOTAL_COVERAGE_PERCENTAGE=$(awk "BEGIN { percent = 100 * ${COVERED_LINES} / ${TOTAL_LINES}; \
+                                    wholeInteger = int(percent); \
+                                    print (percent - wholeInteger < 0.5) ? wholeInteger : wholeInteger + 1 }")
     fi
     
     echo $((TOTAL_COVERAGE_PERCENTAGE)) > ${DOTNET_CODE_COVERAGE_INFO}
