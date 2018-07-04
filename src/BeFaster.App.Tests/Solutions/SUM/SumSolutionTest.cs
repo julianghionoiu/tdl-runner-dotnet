@@ -1,7 +1,7 @@
-﻿using BeFaster.App.Solutions;
+﻿using BeFaster.App.Solutions.SUM;
 using NUnit.Framework;
 
-namespace BeFaster.App.Tests.Solutions
+namespace BeFaster.App.Tests.Solutions.SUM
 {
     [TestFixture]
     public class SumSolutionTest

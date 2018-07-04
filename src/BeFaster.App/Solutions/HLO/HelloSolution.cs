@@ -1,10 +1,10 @@
 ﻿using BeFaster.Runner.Exceptions;
 
-namespace BeFaster.App.Solutions
+namespace BeFaster.App.Solutions.HLO
 {
-    public static class CheckoutSolution
+    public static class HelloSolution
     {
-        public static int Checkout(string skus)
+        public static string Hello(string friendName)
         {
             throw new SolutionNotImplementedException();
         }

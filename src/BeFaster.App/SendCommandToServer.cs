@@ -1,5 +1,8 @@
 ﻿using System;
-using BeFaster.App.Solutions;
+using BeFaster.App.Solutions.CHK;
+using BeFaster.App.Solutions.FIZ;
+using BeFaster.App.Solutions.HLO;
+using BeFaster.App.Solutions.SUM;
 using BeFaster.Runner;
 using BeFaster.Runner.Extensions;
 using BeFaster.Runner.Utils;
