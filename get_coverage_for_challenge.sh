@@ -14,12 +14,17 @@ DOTNET_CODE_COVERAGE_INFO="${SCRIPT_CURRENT_DIR}/coverage.tdl"
 mkdir -p ${SCRIPT_CURRENT_DIR}/coverage
 
 ( cd ${SCRIPT_CURRENT_DIR} && \
-     mono /usr/bin/nuget restore befaster.sln)
+     nuget restore befaster.sln)
      
 ( cd ${SCRIPT_CURRENT_DIR} && \
      msbuild ${SCRIPT_CURRENT_DIR}/befaster.sln /p:buildmode=debug /p:TargetFrameworkVersion=v4.5 )
      
-echo "BeFaster" > ${SCRIPT_CURRENT_DIR}/tests.cfg     
+echo "BeFaster" > ${SCRIPT_CURRENT_DIR}/tests.cfg
+
+if [[ -z "${BABOON_HOME}" ]]; then
+  echo "BABOON_HOME is not set, BABOON_HOME should point to the path where XR.Baboon has been built and ready to be used, exiting now..."
+  exit -1
+fi
 
 ( cd ${SCRIPT_CURRENT_DIR} && \
         BABOON_CFG=tests.cfg mono ${BABOON_HOME}/covtool/bin/covem.exe \
@@ -40,9 +45,7 @@ if [ -f "${DOTNET_TEST_REPORT_DB_FILE}" ]; then
     if [[ ${TOTAL_LINES} -eq 0 ]]; then
         TOTAL_COVERAGE_PERCENTAGE=0
     else
-        TOTAL_COVERAGE_PERCENTAGE=$(awk "BEGIN { percent = 100 * ${COVERED_LINES} / ${TOTAL_LINES}; \
-                                    wholeInteger = int(percent); \
-                                    print (percent - wholeInteger < 0.5) ? wholeInteger : wholeInteger + 1 }")
+        TOTAL_COVERAGE_PERCENTAGE=$(( ${COVERED_LINES} * 100 / ${TOTAL_LINES} ))
     fi
     
     echo $((TOTAL_COVERAGE_PERCENTAGE)) > ${DOTNET_CODE_COVERAGE_INFO}
