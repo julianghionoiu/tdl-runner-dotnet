@@ -53,16 +53,19 @@ mkdir -p ${CSHARP_TEST_COVERAGE_DIR}
 )
 
 # Run the tests against the instrumented binaries
+FULL_PATH_TO_NUNIT_CONSOLE="$(cd ${SCRIPT_CURRENT_DIR} && find . -path *nunit*console.exe | head -n 1 || true)"
+
 (
   cd ${SCRIPT_CURRENT_DIR} && \
     mono ${SCRIPT_CURRENT_DIR}/packages/altcover.3.5.569/tools/net45/AltCover.exe Runner                \
-        --executable ${SCRIPT_CURRENT_DIR}/packages/NUnit.ConsoleRunner.3.8.0/tools/nunit3-console.exe  \
+        --executable ${SCRIPT_CURRENT_DIR}/${FULL_PATH_TO_NUNIT_CONSOLE}                                \
         --recorderDirectory ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover/                               \
         -w ${SCRIPT_CURRENT_DIR}                                                                        \
         -- --noheader --labels=All  --work=${SCRIPT_CURRENT_DIR}                                        \
-        --result=${CSHARP_TEST_RUN_REPORT}                                                     \
+        --result=${CSHARP_TEST_RUN_REPORT}                                                              \
         ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover/BeFaster.App.Tests.dll || true
 )
+
 
 [ -e ${CSHARP_CODE_COVERAGE_INFO} ] && rm ${CSHARP_CODE_COVERAGE_INFO}
 
