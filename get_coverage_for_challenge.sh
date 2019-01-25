@@ -32,10 +32,12 @@ mkdir -p ${CSHARP_TEST_COVERAGE_DIR}
 [ -e ${SCRIPT_CURRENT_DIR}/__Instrumented ] && rm -fr ${SCRIPT_CURRENT_DIR}/__Instrumented
 [ -e ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover ] && rm -fr ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover
 
+FULL_PATH_TO_ALTCOVER="$(cd ${SCRIPT_CURRENT_DIR} && find . -path *altcover* | head -n 1 || true)"/tools/net45/AltCover.exe
+
 # Instrument the binaries so that coverage can be collected
 (
     cd ${SCRIPT_CURRENT_DIR} && \
-    mono ${SCRIPT_CURRENT_DIR}/packages/altcover.3.5.569/tools/net45/AltCover.exe \
+    mono ${SCRIPT_CURRENT_DIR}/${FULL_PATH_TO_ALTCOVER}                           \
       --opencover --linecover                                                     \
       --inputDirectory ${SCRIPT_CURRENT_DIR}/src/BeFaster.App.Tests/bin/Debug     \
       --assemblyFilter=Adapter                                                    \
@@ -49,7 +51,7 @@ mkdir -p ${CSHARP_TEST_COVERAGE_DIR}
       --assemblyExcludeFilter=Mono\.DllMap.+                                      \
       --typeFilter=System.                                                        \
       --outputDirectory=${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover              \
-      --xmlReport=${CSHARP_INSTRUMENTED_COVERAGE_REPORT} || true
+      --xmlReport=${CSHARP_INSTRUMENTED_COVERAGE_REPORT}
 )
 
 # Run the tests against the instrumented binaries
@@ -57,7 +59,7 @@ FULL_PATH_TO_NUNIT_CONSOLE="$(cd ${SCRIPT_CURRENT_DIR} && find . -path *nunit*co
 
 (
   cd ${SCRIPT_CURRENT_DIR} && \
-    mono ${SCRIPT_CURRENT_DIR}/packages/altcover.3.5.569/tools/net45/AltCover.exe Runner                \
+    mono ${SCRIPT_CURRENT_DIR}/${FULL_PATH_TO_ALTCOVER} Runner                                          \
         --executable ${SCRIPT_CURRENT_DIR}/${FULL_PATH_TO_NUNIT_CONSOLE}                                \
         --recorderDirectory ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover/                               \
         -w ${SCRIPT_CURRENT_DIR}                                                                        \
