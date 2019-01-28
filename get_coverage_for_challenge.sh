@@ -65,7 +65,7 @@ FULL_PATH_TO_NUNIT_CONSOLE="$(cd ${SCRIPT_CURRENT_DIR} && find . -path *nunit*co
         -w ${SCRIPT_CURRENT_DIR}                                                                        \
         -- --noheader --labels=All  --work=${SCRIPT_CURRENT_DIR}                                        \
         --result=${CSHARP_TEST_RUN_REPORT}                                                              \
-        ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover/BeFaster.App.Tests.dll
+        ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover/BeFaster.App.Tests.dll || true
 )
 
 
