@@ -65,7 +65,7 @@ FULL_PATH_TO_NUNIT_CONSOLE="$(cd ${SCRIPT_CURRENT_DIR} && find . -path *nunit*co
         -w ${SCRIPT_CURRENT_DIR}                                                                        \
         -- --noheader --labels=All  --work=${SCRIPT_CURRENT_DIR}                                        \
         --result=${CSHARP_TEST_RUN_REPORT}                                                              \
-        ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover/BeFaster.App.Tests.dll || true
+        ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover/BeFaster.App.Tests.dll
 )
 
 
@@ -73,9 +73,10 @@ FULL_PATH_TO_NUNIT_CONSOLE="$(cd ${SCRIPT_CURRENT_DIR} && find . -path *nunit*co
 
 if [ -f "${CSHARP_INSTRUMENTED_COVERAGE_REPORT}" ]; then
     TOTAL_COVERAGE_PERCENTAGE=0
+    echo ${TOTAL_COVERAGE_PERCENTAGE} > ${CSHARP_CODE_COVERAGE_INFO}
     COVERAGE_SUMMARY_FILE=${CSHARP_TEST_COVERAGE_DIR}/coverage-summary-${CHALLENGE_ID}.xml
     COVERAGE_IN_PACKAGE=$(xmllint ${CSHARP_INSTRUMENTED_COVERAGE_REPORT} \
-                                  --xpath '//Class[starts-with(./FullName,"BeFaster.App.Solutions.'${CHALLENGE_ID}'.")]/Summary' || true)
+                                  --xpath '//Class[starts-with(./FullName,"BeFaster.App.Solutions.'${CHALLENGE_ID}'.")]/Summary')
 
    echo "<xml>${COVERAGE_IN_PACKAGE}</xml>" > ${COVERAGE_SUMMARY_FILE}
    if [[ ! -z "${COVERAGE_IN_PACKAGE}" ]]; then
