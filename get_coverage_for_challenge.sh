@@ -32,9 +32,16 @@ mkdir -p ${CSHARP_TEST_COVERAGE_DIR}
 [ -e ${SCRIPT_CURRENT_DIR}/__Instrumented ] && rm -fr ${SCRIPT_CURRENT_DIR}/__Instrumented
 [ -e ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover ] && rm -fr ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover
 
-FULL_PATH_TO_ALTCOVER="$(cd ${SCRIPT_CURRENT_DIR} && find packages -path *altcover* | head -n 1 || true)"/tools/net45/AltCover.exe
+
+if [[ ! -e "${SCRIPT_CURRENT_DIR}/src/BeFaster.App/Solutions/${CHALLENGE_ID}" ]]; then
+   echo "" > ${CSHARP_CODE_COVERAGE_INFO}
+   echo "The provided CHALLENGE_ID: '${CHALLENGE_ID}' isn't valid, aborting process..."
+   exit 1
+fi
 
 # Instrument the binaries so that coverage can be collected
+FULL_PATH_TO_ALTCOVER="$(cd ${SCRIPT_CURRENT_DIR} && find packages -path *altcover* | head -n 1 || true)"/tools/net45/AltCover.exe
+
 (
     cd ${SCRIPT_CURRENT_DIR} && \
     mono ${SCRIPT_CURRENT_DIR}/${FULL_PATH_TO_ALTCOVER}                           \
@@ -68,7 +75,6 @@ FULL_PATH_TO_NUNIT_CONSOLE="$(cd ${SCRIPT_CURRENT_DIR} && find packages -path *n
         --result=${CSHARP_TEST_RUN_REPORT}                                                              \
         ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover/BeFaster.App.Tests.dll || true
 )
-
 
 [ -e ${CSHARP_CODE_COVERAGE_INFO} ] && rm ${CSHARP_CODE_COVERAGE_INFO}
 
