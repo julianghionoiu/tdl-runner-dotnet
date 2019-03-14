@@ -82,7 +82,7 @@ if [ -f "${CSHARP_INSTRUMENTED_COVERAGE_REPORT}" ]; then
     TOTAL_COVERAGE_PERCENTAGE=0
     COVERAGE_SUMMARY_FILE=${CSHARP_TEST_COVERAGE_DIR}/coverage-summary-${CHALLENGE_ID}.xml
     COVERAGE_IN_PACKAGE=$(xmllint ${CSHARP_INSTRUMENTED_COVERAGE_REPORT} \
-                                  --xpath '//Class[starts-with(./FullName,"BeFaster.App.Solutions.'${CHALLENGE_ID}'.")]/Summary' || true)
+                                  --xpath '//Class[starts-with(./FullName,"BeFaster.App.Solutions.'${CHALLENGE_ID}'.")]/Summary')
 
    echo "<xml>${COVERAGE_IN_PACKAGE}</xml>" > ${COVERAGE_SUMMARY_FILE}
    if [[ ! -z "${COVERAGE_IN_PACKAGE}" ]]; then
