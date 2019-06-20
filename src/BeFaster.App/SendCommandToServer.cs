@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using BeFaster.App.Solutions.CHK;
 using BeFaster.App.Solutions.FIZ;
 using BeFaster.App.Solutions.HLO;
 using BeFaster.App.Solutions.SUM;
+using BeFaster.App.Solutions.ARRS;
+using BeFaster.App.Solutions.IRNG;
 using BeFaster.Runner;
 using BeFaster.Runner.Extensions;
 using BeFaster.Runner.Utils;
+using Newtonsoft.Json.Linq;
 using TDL.Client;
 using TDL.Client.Runner;
 
@@ -62,6 +66,8 @@ namespace BeFaster.App
                 .SetConfig(Utils.GetRunnerConfig())
                 .WithSolutionFor("sum", p => SumSolution.Sum((int)p[0], (int)p[1]))
                 .WithSolutionFor("hello", p => HelloSolution.Hello((string)p[0]))
+                .WithSolutionFor("array_sum", p => ArraySumSolution.Compute(((JArray)p[0]).ToObject<List<int>>()))
+                .WithSolutionFor("int_range", p => IntRangeSolution.Generate((int)p[0], (int)p[1]))
                 .WithSolutionFor("fizz_buzz", p => FizzBuzzSolution.FizzBuzz((int)p[0]))
                 .WithSolutionFor("checkout", p => CheckoutSolution.Checkout((string)p[0]))
                 .Create();

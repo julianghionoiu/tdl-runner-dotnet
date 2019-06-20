@@ -55,7 +55,7 @@
       <HintPath>..\..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="TDL.Client">
-      <HintPath>..\..\packages\TDL.Client.0.26.0\lib\net45\TDL.Client.dll</HintPath>
+      <HintPath>..\..\packages\TDL.Client.0.26.1\lib\net45\TDL.Client.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +67,8 @@
     <Compile Include="Solutions\SUM\SumSolution.cs" />
     <Compile Include="Solutions\TST\One.cs" />
     <Compile Include="Solutions\TST\Two.cs" />
+    <Compile Include="Solutions\ARRS\ArraySumSolution.cs" />
+    <Compile Include="Solutions\IRNG\IntRangeSolution.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -77,6 +79,10 @@
       <Project>{41d40296-2dab-423a-84b3-13e656c58b5a}</Project>
       <Name>BeFaster.Runner</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Solutions\ARRS\" />
+    <Folder Include="Solutions\IRNG\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
