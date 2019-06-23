@@ -62,15 +62,15 @@ namespace BeFaster.App
         /// <param name="args">Action.</param>
         private static void Main(string[] args)
         {
-            var runner = new QueueBasedImplementationRunner.Builder()
-                .SetConfig(Utils.GetRunnerConfig())
-                .WithSolutionFor("sum", p => SumSolution.Sum((int)p[0], (int)p[1]))
-                .WithSolutionFor("hello", p => HelloSolution.Hello((string)p[0]))
-                .WithSolutionFor("array_sum", p => ArraySumSolution.Compute(((JArray)p[0]).ToObject<List<int>>()))
-                .WithSolutionFor("int_range", p => IntRangeSolution.Generate((int)p[0], (int)p[1]))
-                .WithSolutionFor("fizz_buzz", p => FizzBuzzSolution.FizzBuzz((int)p[0]))
-                .WithSolutionFor("checkout", p => CheckoutSolution.Checkout((string)p[0]))
-                .Create();
+            var runner = new QueueBasedImplementationRunner.Builder().
+                SetConfig(Utils.GetRunnerConfig()).
+                WithSolutionFor("sum", (List<JToken> p) => SumSolution.Sum(p[0].ToObject<int>(), p[1].ToObject<int>())).
+                WithSolutionFor("hello", (List<JToken> p) => HelloSolution.Hello(p[0].ToObject<string>())).
+                WithSolutionFor("array_sum", (List<JToken> p) => ArraySumSolution.Compute((p[0].ToObject<List<int>>()))).
+                WithSolutionFor("int_range", (List<JToken> p) => IntRangeSolution.Generate(p[0].ToObject<int>(), p[1].ToObject<int>())).
+                WithSolutionFor("fizz_buzz", (List<JToken> p) => FizzBuzzSolution.FizzBuzz(p[0].ToObject<int>())).
+                WithSolutionFor("checkout", (List<JToken> p) => CheckoutSolution.Checkout(p[0].ToObject<string>())).
+                Create();
 
             ChallengeSession.ForRunner(runner)
                 .WithConfig(Utils.GetConfig())
