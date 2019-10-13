@@ -1,8 +1,8 @@
 ﻿using BeFaster.Runner.Exceptions;
 
-namespace BeFaster.App.Solutions.CHK
+namespace BeFaster.App.Solutions.CHL
 {
-    public static class CheckoutSolution
+    public static class CheckliteSolution
     {
         public static int ComputePrice(string skus)
         {

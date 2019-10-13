@@ -69,6 +69,7 @@
     <Compile Include="Solutions\TST\Two.cs" />
     <Compile Include="Solutions\ARRS\ArraySumSolution.cs" />
     <Compile Include="Solutions\IRNG\IntRangeSolution.cs" />
+    <Compile Include="Solutions\CHL\CheckliteSolution.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -83,6 +84,7 @@
   <ItemGroup>
     <Folder Include="Solutions\ARRS\" />
     <Folder Include="Solutions\IRNG\" />
+    <Folder Include="Solutions\CHL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
